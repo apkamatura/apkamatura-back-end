@@ -1,16 +1,18 @@
 package pl.apka.matura.apkamatura;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import pl.apka.matura.apkamatura.tags.IntegrationTest;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
-public class ApkamaturaApplicationTests {
+@ExtendWith(SpringExtension.class)
+class ApkamaturaApplicationTests {
 
-  @Test
-  public void contextLoads() {
+  @IntegrationTest
+  void contextLoads() {
   }
 
 }
