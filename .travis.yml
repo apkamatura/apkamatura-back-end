@@ -8,3 +8,14 @@ cache:
   - .autoconf
   - $HOME/.m2
 
+jobs:
+  include:
+    - name: unit
+      script:
+        - mvn test -P unit-testing -B
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
+    - name: integration
+      if: branch in (master,develop)
+      script:
+        - mvn test -P integration-testing -B
