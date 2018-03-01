@@ -7,12 +7,19 @@ cache:
   directories:
   - .autoconf
   - $HOME/.m2
+  - $HOME/.sonar/cache
+
+addons:
+    sonarcloud:
+        organization: "apkamatura"
+        token:
+          secure: ${SONAR_TOKEN}
 
 jobs:
   include:
     - name: unit
       script:
-        - mvn test -P unit-testing -B
+        - mvn test -P unit-testing sonar:sonar -B
       after_success:
         - bash <(curl -s https://codecov.io/bash)
     - name: integration
